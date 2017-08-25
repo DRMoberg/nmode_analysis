@@ -1,0 +1,21 @@
+Running normal mode analysis:
+1) Copy this folder to the directory containing your VIBxyz.xyz output.
+	Usually cp -r nmode_analysis_setup {path}/normal_modes/vib/
+
+Run 0 ps trajectory for each mode to get required CMD files (can be run on local machines):
+1) Set the number of water molecules in add_disp.sh and edit the DLPOLY location.
+2) Set s (first mode) and nmodes in add_disp.sh.
+3) Edit MB-mu and MB-alpha code locations in compute_dip_pol.sh.
+4) Run ./add_disp.sh
+
+Compute dipole moments and polarizability tensors for desired modes (setup to run on TSCC):
+1) Edit the CONTROL and FIELD files in the files/ directory for your system.
+2) Edit the files in split_runs for your setup:
+	in run_pack-dip_pol.sh, edit the EXE locations.
+3) Submit jobs with ./submit_jobs.sh first_mode last_mode.
+	(Range of mode values can span more than 16 modes)
+
+Compute instantaneous derivative approximations (fast, can be done on local machines):
+1) Set the number of water molecules in your system in calc_dip_pol.sh.
+2) Run ./calc_dip_pol.sh first_mode last_mode
+
