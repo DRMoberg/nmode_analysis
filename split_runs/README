@@ -1,0 +1,16 @@
+This submission script submits batches of 16 normal modes per TSCC job, calculating the many-body dipole moment
+and polarizability tensor for each mode.
+
+1. In run_pack-dip_pol.sh, set location of bulk_dip and bulk_pol codes.
+
+2. In run_set.job, set up TSCC submission script.
+
+3. Submit jobs with submit_jobs.sh.  This script will submit normal modes in batches of 16 per job.
+
+    ./submit_jobs.sh FIRST LAST
+
+   Multiple jobs will be submitted if FIRST to LAST spans more than 16 modes, e.g.:
+
+    ./submit_jobs.sh 1 48
+
+   would submit 3 jobs, containing modes 1-16, 17-32, and 33-48.
